@@ -61,7 +61,7 @@ sleep 1
 
 echo "Starting script..."
 
-wait_until_screen_matches "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130" '60'
+wait_until_screen_matches "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130" '3600'
 
 echo "Accept Steam EULA..."
 xdotool mousemove 660 555
