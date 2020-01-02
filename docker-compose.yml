@@ -1,0 +1,17 @@
+version: "2"
+services:
+  hoi4_headless:
+    build:
+      context: .
+      args:
+        VNC: 0
+    env_file:
+      - test.env
+    shm_size: 256M
+    volumes:
+      - ./steam_description.txt:/home/steam/description.txt
+      - ./mod/test_publish_2/:/home/steam/mod/test_publish_2/
+      - ./mod/test_publish_2.mod:/home/steam/mod/test_publish_2.mod
+      #- ./ssfn508062338294460496:/home/steam/.steam/steam/ssfn508062338294460496
+    ports:
+      - 5998:5998
