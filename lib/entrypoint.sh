@@ -51,6 +51,7 @@ else
     echo "$STEAM_SENTRY_FILE_HEX" | xxd -p -r - "$HOME/.steam/steam/$STEAM_SENTRY_FILE_NAME"
 fi
 /opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
+sudo pkill Xvfb
 sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
 if [ -x "$(command -v x11vnc)" ]; then sudo x11vnc -passwd TestVNC -display $DISPLAY -N -forever; fi &
