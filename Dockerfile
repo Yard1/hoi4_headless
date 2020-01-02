@@ -15,6 +15,9 @@ RUN ln -s "/home/steam/.local/share/Paradox Interactive/Hearts of Iron IV/mod" "
 WORKDIR "/home/steam/.local/share/Paradox Interactive/Hearts of Iron IV/"
 RUN mkdir -p "/home/steam/.steam/steam/steamapps/common/Hearts of Iron IV"
 ARG target="/home/steam/.steam/steam/steamapps/common/Hearts of Iron IV"
+ENV DISPLAY :98
+RUN /opt/steamcmd/steamcmd.sh +quit
+RUN /home/steam/update_steam.sh
 ADD --chown=steam:steam data/hoi4 ${target}
 ADD --chown=steam:steam data/appmanifest_394360.acf "/home/steam/.steam/steam/steamapps/"
 RUN mkdir /home/steam/image_specimens
@@ -36,5 +39,4 @@ RUN set -x \
 	&& apt-get autoremove -y \
 	&& rm -rf /var/lib/apt/lists/*
 USER steam
-ENV DISPLAY :98
 ENTRYPOINT [ "/entrypoint.sh" ]

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+img=0
+
 # set -x
 # $1 = filename
 # $2 = crop arguments
@@ -28,11 +31,12 @@ wait_until_screen_matches () {
             sleep 1
             break
         elif [ "$i" = $3 ]; then
+        #    echo "Maximum amount of iterations reached, exiting with a non-zero exit code..."
+            echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+            sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+            img=$((img+1))
             echo "Maximum amount of iterations reached, moving onto next step..."
             break
-        #    echo "Maximum amount of iterations reached, exiting with a non-zero exit code..."
-        #    echo "Saving current screen to $HOME/debug_screen.png"
-        #    import -screen -window root $HOME/debug_screen.png
         #    exit 1
         fi
         import -screen -window root $HOME/debug_screen.png
@@ -57,7 +61,7 @@ sleep 1
 
 echo "Starting script..."
 
-wait_until_screen_matches "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130" '20'
+wait_until_screen_matches "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130" '60'
 
 echo "Accept Steam EULA..."
 xdotool mousemove 660 555
@@ -159,8 +163,9 @@ do
         exit 0
     else
         echo "Unexpected screen doing mod upload, exiting with a non-zero exit code..."
-        echo "Saving current screen to $HOME/debug_screen.png"
-        import -screen -window root $HOME/debug_screen.png
+        echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+        sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+        img=$((img+1))
         sleep 1
         exit 1
     fi
