@@ -1,6 +1,7 @@
 FROM yard1/steamcmd_gmail as steamcmd-gmail
 
 FROM yard1/steam_headless
+LABEL author="Antoni Baum (Yard1) <antoni.baum@protonmail.com>"
 USER root
 RUN set -x \
 	&& apt-get update \
