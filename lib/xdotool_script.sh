@@ -8,9 +8,9 @@ img=0
 compare_current_screen () {
     rm $HOME/temp.png 2> /dev/null
     import -screen -window root "$HOME/temp.png"
-    cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_uncropped.png"
+    sudo cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_uncropped.png"
     mogrify -crop $2 "$HOME/temp.png"
-    cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_cropped.png"
+    sudo cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_cropped.png"
     compare_out=$(compare -metric PSNR "$HOME/temp.png" $1 /dev/null 2>&1)
     echo "Compare current screen at $2 to $1: $compare_out"
     #rm $HOME/temp.png
