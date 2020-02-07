@@ -71,7 +71,7 @@ xdotool click 1 mousemove 0 0
 i=0
 while sleep 2
 do
-    if compare_current_screen "$HOME/image_specimens/update_135x60+805+427.png" "500x460+390+130"; then
+    if compare_current_screen "$HOME/image_specimens/update_135_60_805_427.png" "135x60+805+427"; then
         echo "Accept update..."
         xdotool mousemove 840 470
         xdotool click 1 mousemove 0 0
