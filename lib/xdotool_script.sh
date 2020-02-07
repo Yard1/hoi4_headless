@@ -63,11 +63,27 @@ sleep 1
 
 echo "Starting script..."
 
-wait_until_screen_matches "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130" '3600'
-
-echo "Accept Steam EULA..."
-xdotool mousemove 660 555
-xdotool click 1 mousemove 0 0
+i=0
+while sleep 2
+do
+    if compare_current_screen "$HOME/image_specimens/update_135x60+805+427.png" "500x460+390+130"; then
+        echo "Accept update..."
+        xdotool mousemove 840 470
+        xdotool click 1 mousemove 0 0
+    elif compare_current_screen "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130"; then
+        echo "Accept Steam EULA..."
+        xdotool mousemove 660 555
+        xdotool click 1 mousemove 0 0
+        break
+    elif [ "$i" = '3600' ]; then
+        echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+        sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+        img=$((img+1))
+        echo "Maximum amount of iterations reached, moving onto next step..."
+        break
+    fi
+    i=$((i+1))
+done
 
 wait_until_screen_matches "$HOME/image_specimens/get_started_152_15_563_476.png" "152x15+563+476" '20'
 
