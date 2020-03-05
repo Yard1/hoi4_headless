@@ -18,7 +18,7 @@
     "gameEngine": "clausewitz-jomini",
     "gameId": "hoi4",
     "ingameSettingsLayoutPath": "settings-layout.json",
-    "rawVersion": "1.8.1",
+    "rawVersion": "1.9.0",
     "themeFile": "launcher-assets/theme-settings.json",
-    "version": "Fork v1.8.1 (34fcbd50f5c77135d84e16b37a8baa59)"
+    "version": "Fork v1.8.2 (ffeae481ed641510fef4cc1ac5d5ce2f)"
 }
