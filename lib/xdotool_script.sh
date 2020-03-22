@@ -75,6 +75,10 @@ do
         echo "Accept update..."
         xdotool mousemove 840 470
         xdotool click 1 mousemove 0 0
+    elif compare_current_screen "$HOME/image_specimens/update_135_60_805_427.png" "135x60+805+451"; then
+        echo "Accept update..."
+        xdotool mousemove 840 500
+        xdotool click 1 mousemove 0 0
     elif compare_current_screen "$HOME/image_specimens/get_started_152_15_563_476.png" "152x15+563+476"; then
         echo "Get Started..."
         xdotool mousemove 640 480
