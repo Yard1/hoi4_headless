@@ -123,7 +123,7 @@ xdotool click 1 mousemove 0 0
 wait_until_screen_matches "$HOME/image_specimens/play_45_15_618_272.png" "45x15+618+272" '5'
 
 echo "Click on Mods..."
-xdotool mousemove 622 396
+xdotool mousemove 635 396
 sleep 0.1
 xdotool click 1
 sleep 0.1
