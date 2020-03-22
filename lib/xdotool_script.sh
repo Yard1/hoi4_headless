@@ -140,7 +140,7 @@ do
     if compare_current_screen "$HOME/image_specimens/create_mod_90_22_537_102.png" "90x22+537+102"; then
         sleep 2
         break
-    elif [ "$i" = 13 ]; then
+    elif [ "$i" = 20 ]; then
         echo "Maximum amount of iterations reached, moving onto next step..."
         break
     fi
