@@ -136,6 +136,15 @@ do
     if compare_current_screen "$HOME/image_specimens/create_mod_90_22_537_102.png" "90x22+537+102"; then
         sleep 2
         break
+    elif compare_current_screen "$HOME/image_specimens/play_45_15_618_272.png" "45x15+618+272"; then
+        echo "Click on Mods again..."
+        xdotool mousemove 610 396
+        sleep 0.1
+        xdotool click 1
+        sleep 0.1
+        xdotool mousemove 0 0
+        sleep 1
+        continue
     elif [ "$i" = 13 ]; then
         echo "Maximum amount of iterations reached, moving onto next step..."
         break
