@@ -50,14 +50,14 @@ sleep 2
 
 if [ -f "$HOME/description.txt" ]; then
     echo "$HOME/description.txt exists, using as PDX_DESCRIPTION"
-    xsel -b -i < "$HOME/description.txt"
-elif [ -z "$PDX_DESCRIPTION" ] || [ "$PDX_DESCRIPTION" = "" ]; then
-    echo "PDX_DESCRIPTION env variable is not set, using default"
-    export PDX_DESCRIPTION="Uploaded automatically"
-    echo "$PDX_DESCRIPTION" | xsel -b -i
-else
-    echo "$PDX_DESCRIPTION" | xsel -b -i
+    export PDX_DESCRIPTION=$(<$HOME/description.txt)
 fi
+if [ -z "$PDX_DESCRIPTION" ] || [ "$PDX_DESCRIPTION" = "" ]; then
+    echo "PDX_DESCRIPTION env variable is not set or empty, using default"
+    export PDX_DESCRIPTION="Uploaded automatically"
+fi
+
+echo "$PDX_DESCRIPTION" | xsel -b -i
 
 sleep 1
 
