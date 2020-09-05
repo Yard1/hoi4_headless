@@ -70,7 +70,7 @@ do
         echo "Accept Steam EULA..."
         xdotool mousemove 660 555
         xdotool click 1 mousemove 0 0
-    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_474_398_403_161.png" "474x398+403+161"; then
+    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_474_351_403_161.png" "474x351+403+161"; then
         echo "Accept update..."
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
