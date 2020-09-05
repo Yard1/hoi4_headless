@@ -74,6 +74,7 @@ do
         echo "Accept update..."
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
+        break
     elif [ "$i" = '600' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
