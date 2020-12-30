@@ -57,7 +57,7 @@ if [ -z "$PDX_DESCRIPTION" ] || [ "$PDX_DESCRIPTION" = "" ]; then
     export PDX_DESCRIPTION="Uploaded automatically"
 fi
 
-echo "$PDX_DESCRIPTION" | xsel -b -i
+echo "$PDX_DESCRIPTION" | sed 's/\r$//g' | xsel -b -i
 
 sleep 1
 
