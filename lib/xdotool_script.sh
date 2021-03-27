@@ -71,16 +71,18 @@ do
         xdotool mousemove 660 555
         xdotool click 1 mousemove 0 0
         break
-    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_474_351_403_161.png" "474x351+403+161"; then
+    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_474_398_403_162.png" "474x398+403+162"; then
         echo "Accept update..."
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '600' ]; then
+    elif [ "$i" = '200' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
         echo "Maximum amount of iterations reached, moving onto next step..."
+        xdotool mousemove 715 535
+        xdotool click 1 mousemove 0 0
         break
     fi
     i=$((i+1))
@@ -102,11 +104,13 @@ do
         xdotool mousemove 640 480
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '3600' ]; then
+    elif [ "$i" = '600' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
         echo "Maximum amount of iterations reached, moving onto next step..."
+        xdotool mousemove 640 480
+        xdotool click 1 mousemove 0 0
         break
     fi
     i=$((i+1))
