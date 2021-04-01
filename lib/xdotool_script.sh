@@ -71,12 +71,12 @@ do
         xdotool mousemove 660 555
         xdotool click 1 mousemove 0 0
         break
-    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_474_398_403_162.png" "474x398+403+162"; then
+    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_439_29_422_198.png" "439x29+422+198"; then
         echo "Accept update..."
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '200' ]; then
+    elif [ "$i" = '120' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
