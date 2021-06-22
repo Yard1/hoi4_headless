@@ -7,7 +7,7 @@
 	"installdir"		"Hearts of Iron IV"
 	"LastUpdated"		"1623320068"
 	"UpdateResult"		"0"
-	"SizeOnDisk"		"3406249902"
+	"SizeOnDisk"		"3656936946"
 	"buildid"		"6806810"
 	"LastOwner"		"76561198045710503"
 	"BytesToDownload"		"0"
@@ -115,8 +115,8 @@
 		}
 		"815460"
 		{
-			"manifest"		"1534839024001374598"
-			"size"		"86274347"
+			"manifest"		"2043546293988065096"
+			"size"		"87762853"
 			"dlcappid"		"815460"
 		}
 		"1158100"
