@@ -99,6 +99,10 @@ do
         echo "Accept update..."
         xdotool mousemove 840 500
         xdotool click 1 mousemove 0 0
+    elif compare_current_screen "$HOME/image_specimens/pending_cloud_uploads_220_23_660_463.png" "220x23+660+463"; then
+        echo "Ignore pending cloud uploads..."
+        xdotool mousemove 750 470
+        xdotool click 1 mousemove 0 0
     elif compare_current_screen "$HOME/image_specimens/get_started_152_15_563_476.png" "152x15+563+476"; then
         echo "Get Started..."
         xdotool mousemove 640 480
