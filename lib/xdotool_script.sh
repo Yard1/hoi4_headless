@@ -25,6 +25,9 @@ compare_current_screen () {
 # $2 = crop arguments
 # $3 = max_iters
 wait_until_screen_matches () {
+    echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+    sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+    img=$((img+1))
     i=0
     while sleep 2
     do
@@ -135,6 +138,10 @@ sleep 0.5
 xdotool key Return
 
 sleep 7
+
+echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+img=$((img+1))
 
 echo "Skip username generation..."
 xdotool mousemove 1083 656
