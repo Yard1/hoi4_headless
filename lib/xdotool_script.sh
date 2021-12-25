@@ -140,9 +140,6 @@ echo "Skip username generation..."
 xdotool mousemove 1083 656
 xdotool click 1 mousemove 0 0
 
-xdotool mousemove 1122 80
-xdotool click 1 mousemove 0 0
-
 wait_until_screen_matches "$HOME/image_specimens/pdx_eula_280_26_500_140.png" "280x26+500+140" '5'
 
 echo "Accept PDX EULA..."
