@@ -5,10 +5,10 @@
 	"name"		"Hearts of Iron IV"
 	"StateFlags"		"4"
 	"installdir"		"Hearts of Iron IV"
-	"LastUpdated"		"1643452285"
+	"LastUpdated"		"1646599760"
 	"UpdateResult"		"0"
-	"SizeOnDisk"		"4261952939"
-	"buildid"		"8081092"
+	"SizeOnDisk"		"4319289447"
+	"buildid"		"8250020"
 	"LastOwner"		"76561198975900279"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"
@@ -21,13 +21,13 @@
 	{
 		"394361"
 		{
-			"manifest"		"3999847375721541906"
-			"size"		"3171846233"
+			"manifest"		"4523273772060873606"
+			"size"		"3228949269"
 		}
 		"394363"
 		{
-			"manifest"		"2550560631275400772"
-			"size"		"421880707"
+			"manifest"		"7336558480190539789"
+			"size"		"422114179"
 		}
 		"460551"
 		{
