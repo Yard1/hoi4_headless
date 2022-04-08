@@ -11,10 +11,10 @@ compare_current_screen () {
     sudo cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_uncropped.png"
     mogrify -crop $2 "$HOME/temp.png"
     sudo cp -f "$HOME/temp.png" "$DEBUG_IMAGES/temp_cropped.png"
-    compare_out=$(compare -metric PSNR "$HOME/temp.png" $1 /dev/null 2>&1)
+    compare_out=$(compare -metric AE "$HOME/temp.png" $1 /dev/null 2>&1)
     echo "Compare current screen at $2 to $1: $compare_out"
     #rm $HOME/temp.png
-    if [ "$compare_out" = "0" ] || [ "$compare_out" = "inf" ]; then
+    if [ "$compare_out" = "0" ] || [ "$compare_out" = "1" ] || [ "$compare_out" = "2" ] || [ "$compare_out" = "inf" ]; then
         return 0
     else
         return 1
