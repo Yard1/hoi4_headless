@@ -51,7 +51,7 @@ else
     echo "$STEAM_SENTRY_FILE_HEX" | xxd -p -r - "$HOME/.steam/steam/$STEAM_SENTRY_FILE_NAME"
 fi
 curl https://api.ipify.org
-/opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
+/opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit || /opt/steamcmd/steamcmd.sh +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
 sudo pkill Xvfb
 sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
