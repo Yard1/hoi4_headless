@@ -6,7 +6,7 @@ USER root
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-suggests --no-install-recommends \
-	xdotool imagemagick xsel xauth xxd x11vnc \
+	xdotool imagemagick xsel xauth xxd x11vnc curl \
 	&& rm -rf /var/lib/apt/lists/*
 ARG VNC=1
 RUN set -x \
