@@ -8,6 +8,15 @@ RUN set -x \
 	&& apt-get install -y --no-install-suggests --no-install-recommends \
 	xdotool imagemagick xsel xauth xxd x11vnc \
 	&& rm -rf /var/lib/apt/lists/*
+ARG VNC=1
+RUN set -x \
+	&& if [ "$VNC" != 0 ]; then \
+	apt-get update \
+	&& apt-get install -y --no-install-suggests --no-install-recommends \
+	x11vnc; else apt-get remove --purge -y x11vnc; fi \
+	&& apt-get clean autoclean \
+	&& apt-get autoremove -y \
+	&& rm -rf /var/lib/apt/lists/*
 USER steam
 COPY --from=steamcmd-gmail --chown=steam:steam /opt/steamcmd /opt/steamcmd
 COPY --from=steamcmd-gmail --chown=steam:steam /steamcmd_gmail /opt/steamcmd_gmail
@@ -30,14 +39,5 @@ ADD lib/entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh && sed -i 's/\r$//' /entrypoint.sh
 EXPOSE 5998
 ENV DISPLAY :98
-ARG VNC=0
-RUN set -x \
-	&& if [ "$VNC" != 0 ]; then \
-	apt-get update \
-	&& apt-get install -y --no-install-suggests --no-install-recommends \
-	x11vnc; else apt-get remove --purge -y x11vnc; fi \
-	&& apt-get clean autoclean \
-	&& apt-get autoremove -y \
-	&& rm -rf /var/lib/apt/lists/*
 USER steam
 ENTRYPOINT [ "/entrypoint.sh" ]

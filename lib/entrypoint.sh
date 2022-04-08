@@ -50,10 +50,11 @@ else
     echo "Steam Sentry data found, using it..."
     echo "$STEAM_SENTRY_FILE_HEX" | xxd -p -r - "$HOME/.steam/steam/$STEAM_SENTRY_FILE_NAME"
 fi
+curl https://api.ipify.org
 /opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
 sudo pkill Xvfb
 sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
-if [ -x "$(command -v x11vnc)" ]; then sudo x11vnc -passwd TestVNC -display $DISPLAY -N -forever; fi &
+if [ -n "$SETUP_VNC" ]; then sudo x11vnc -passwd TestVNC -display $DISPLAY -N -forever; fi &
 /usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" >> /dev/null &
 /home/steam/xdotool_script.sh
