@@ -69,17 +69,12 @@ echo "Starting script..."
 i=0
 while sleep 2
 do
-    if compare_current_screen "$HOME/image_specimens/steam_eula_500_460_390_130.png" "500x460+390+130"; then
+    if compare_current_screen "$HOME/image_specimens/steam_eula_92_24_674_524.png" "92x24+674+524"; then
         echo "Accept Steam EULA..."
-        xdotool mousemove 660 555
-        xdotool click 1 mousemove 0 0
-        break
-    elif compare_current_screen "$HOME/image_specimens/steam_eula_new_439_29_422_198.png" "439x29+422+198"; then
-        echo "Accept update..."
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '120' ]; then
+    elif [ "$i" = '60' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
