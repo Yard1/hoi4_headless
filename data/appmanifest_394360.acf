@@ -5,16 +5,18 @@
 	"name"		"Hearts of Iron IV"
 	"StateFlags"		"4"
 	"installdir"		"Hearts of Iron IV"
-	"LastUpdated"		"1654973073"
-	"SizeOnDisk"		"5825100533"
+	"LastUpdated"		"1662043884"
+	"SizeOnDisk"		"5754107498"
 	"StagingSize"		"0"
-	"buildid"		"8851859"
-	"LastOwner"		"76561198975900279"
+	"buildid"		"9324400"
+	"LastOwner"		"76561198045710503"
+	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
 	"BytesDownloaded"		"0"
 	"BytesToStage"		"0"
 	"BytesStaged"		"0"
 	"UpdateResult"		"0"
+	"TargetBuildID"		"0"
 	"AutoUpdateBehavior"		"0"
 	"AllowOtherDownloadsWhileRunning"		"0"
 	"ScheduledAutoUpdate"		"0"
@@ -22,49 +24,13 @@
 	{
 		"394361"
 		{
-			"manifest"		"879212015745177082"
-			"size"		"3228994817"
+			"manifest"		"8074053429525743348"
+			"size"		"3228994934"
 		}
 		"394363"
 		{
-			"manifest"		"4298952119325053004"
-			"size"		"1927879717"
-		}
-		"460551"
-		{
-			"manifest"		"7228037718628113478"
-			"size"		"0"
-			"dlcappid"		"460551"
-		}
-		"460555"
-		{
-			"manifest"		"5895216135592145089"
-			"size"		"0"
-			"dlcappid"		"460555"
-		}
-		"460556"
-		{
-			"manifest"		"4680730198169175097"
-			"size"		"0"
-			"dlcappid"		"460556"
-		}
-		"460554"
-		{
-			"manifest"		"5642812745686175999"
-			"size"		"0"
-			"dlcappid"		"460554"
-		}
-		"460553"
-		{
-			"manifest"		"8946002487388312807"
-			"size"		"0"
-			"dlcappid"		"460553"
-		}
-		"460550"
-		{
-			"manifest"		"3790588066727128841"
-			"size"		"0"
-			"dlcappid"		"460550"
+			"manifest"		"4322976211471690333"
+			"size"		"2120842213"
 		}
 		"460559"
 		{
