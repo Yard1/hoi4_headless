@@ -1,14 +1,14 @@
 "AppState"
 {
 	"appid"		"394360"
-	"Universe"		"1"
+	"universe"		"1"
 	"name"		"Hearts of Iron IV"
 	"StateFlags"		"4"
 	"installdir"		"Hearts of Iron IV"
-	"LastUpdated"		"1662043884"
-	"SizeOnDisk"		"5754107498"
+	"LastUpdated"		"1664364498"
+	"SizeOnDisk"		"4873890719"
 	"StagingSize"		"0"
-	"buildid"		"9324400"
+	"buildid"		"9601010"
 	"LastOwner"		"76561198045710503"
 	"UpdateResult"		"0"
 	"BytesToDownload"		"0"
@@ -22,15 +22,15 @@
 	"ScheduledAutoUpdate"		"0"
 	"InstalledDepots"
 	{
-		"394361"
+	"394361"
 		{
-			"manifest"		"8074053429525743348"
-			"size"		"3228994934"
+			"manifest"		"3563925928913781678"
+			"size"		"3670629353"
 		}
 		"394363"
 		{
-			"manifest"		"4322976211471690333"
-			"size"		"2120842213"
+			"manifest"		"7819934088791868820"
+			"size"		"535000277"
 		}
 		"460559"
 		{
@@ -40,8 +40,8 @@
 		}
 		"460600"
 		{
-			"manifest"		"5900750665522320607"
-			"size"		"6358934"
+			"manifest"		"141943012511913960"
+			"size"		"6358931"
 			"dlcappid"		"460600"
 		}
 		"460610"
@@ -58,8 +58,8 @@
 		}
 		"530760"
 		{
-			"manifest"		"4151678125173159881"
-			"size"		"153478604"
+			"manifest"		"2773012737118546958"
+			"size"		"153478601"
 			"dlcappid"		"530760"
 		}
 		"584140"
@@ -76,8 +76,8 @@
 		}
 		"702350"
 		{
-			"manifest"		"7584667839114966039"
-			"size"		"240811670"
+			"manifest"		"3972822999803528123"
+			"size"		"240846766"
 			"dlcappid"		"702350"
 		}
 		"815460"
