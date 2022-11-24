@@ -51,10 +51,12 @@ else
     echo "$STEAM_SENTRY_FILE_HEX" | xxd -p -r - "$HOME/.steam/steam/$STEAM_SENTRY_FILE_NAME"
 fi
 curl https://api.ipify.org
+echo "Starting steamcmd"
 /opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit || /opt/steamcmd/steamcmd.sh +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
 sudo pkill Xvfb
 sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
 if [ -n "$VNC_PASSWORD" ]; then sudo x11vnc -passwd "$VNC_PASSWORD" -display $DISPLAY -N -forever; fi &
-/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" >> /dev/null &
+echo "Starting steam"
+/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" >> "$DEBUG_IMAGES/steam_log.log" &
 /home/steam/xdotool_script.sh
