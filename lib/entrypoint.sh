@@ -58,5 +58,5 @@ sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
 if [ -n "$VNC_PASSWORD" ]; then sudo x11vnc -passwd "$VNC_PASSWORD" -display $DISPLAY -N -forever; fi &
 echo "Starting steam"
-/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" >> "$DEBUG_IMAGES/steam_log.log" &
+/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" &
 /home/steam/xdotool_script.sh
