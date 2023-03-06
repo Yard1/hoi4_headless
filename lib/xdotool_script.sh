@@ -2,7 +2,7 @@
 
 img=0
 
-# set -x
+set -x
 # $1 = filename
 # $2 = crop arguments
 compare_current_screen () {
@@ -62,9 +62,38 @@ fi
 
 echo "$PDX_DESCRIPTION" | sed 's/\r$//g' | xsel -b -i
 
-sleep 1
+sleep 5
 
+echo "Debug images path: $DEBUG_IMAGES"
 echo "Starting script..."
+
+i=0
+while sleep 2
+do
+    if compare_current_screen "$HOME/image_specimens/steam_guard_238_24_321_203.png" "238x24+321+203"; then
+        echo "Get Steam Guard code..."
+        if [ ! -z "$POP3_NO_SSL" ] && [ "$POP3_NO_SSL" != 0 ]; then
+            POP3_NO_SSL="--no-ssl"
+        fi
+        STEAM_GUARD_CODE=$(timeout 610 python3 -u /home/steam/get_steam_guard.py "$POP3_ADDRESS" "$POP3_USER" "$POP3_PASSWORD" "$TIME_START" --port "$POP3_PORT" $POP3_NO_SSL)
+        if [ "$?" = "0" ]; then
+            xdotool mousemove 500 370
+            xdotool click 1 mousemove 0 0
+            xdotool type "$STEAM_GUARD_CODE"
+            sleep 0.5
+            xdotool key Return
+            sleep 1
+            break
+        fi
+    elif [ "$i" = '60' ]; then
+        echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
+        sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
+        img=$((img+1))
+        echo "Maximum amount of iterations reached. Could't login, so stopping."
+        exit 1
+    fi
+    i=$((i+1))
+done
 
 i=0
 while sleep 2
@@ -74,7 +103,7 @@ do
         xdotool mousemove 715 535
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '60' ]; then
+    elif [ "$i" = '15' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
@@ -85,6 +114,8 @@ do
     fi
     i=$((i+1))
 done
+
+sleep 5
 
 i=0
 while sleep 2
