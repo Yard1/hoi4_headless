@@ -74,6 +74,8 @@ do
         echo "Get Steam Guard code..."
         if [ ! -z "$POP3_NO_SSL" ] && [ "$POP3_NO_SSL" != 0 ]; then
             POP3_NO_SSL="--no-ssl"
+        else
+            POP3_NO_SSL=""
         fi
         STEAM_GUARD_CODE=$(timeout 610 python3 -u /home/steam/get_steam_guard.py "$POP3_ADDRESS" "$POP3_USER" "$POP3_PASSWORD" "$TIME_START" --port "$POP3_PORT" $POP3_NO_SSL)
         if [ "$?" = "0" ]; then
