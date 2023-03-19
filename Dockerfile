@@ -6,13 +6,12 @@ USER root
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-suggests --no-install-recommends \
-	xdotool imagemagick xsel xauth xxd x11vnc curl \
+	python3 xdotool imagemagick xsel xauth xxd x11vnc curl libgtk-3-0 libvulkan1 libvulkan1:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 \
 	&& rm -rf /var/lib/apt/lists/*
 ARG VNC=1
 RUN set -x \
 	&& if [ "$VNC" != 0 ]; then \
-	apt-get update \
-	&& apt-get install -y --no-install-suggests --no-install-recommends \
+	apt-get install -y --no-install-suggests --no-install-recommends \
 	x11vnc; else apt-get remove --purge -y x11vnc; fi \
 	&& apt-get clean autoclean \
 	&& apt-get autoremove -y \
@@ -34,6 +33,8 @@ RUN mkdir /home/steam/image_specimens
 ADD --chown=steam:steam image_specimens /home/steam/image_specimens
 ADD --chown=steam:steam lib/xdotool_script.sh /home/steam
 RUN chmod 755 /home/steam/xdotool_script.sh && sed -i 's/\r$//' /home/steam/xdotool_script.sh
+ADD --chown=steam:steam lib/get_steam_guard.py /home/steam
+RUN chmod 755 /home/steam/get_steam_guard.py && sed -i 's/\r$//' /home/steam/get_steam_guard.py
 USER root
 ADD lib/entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh && sed -i 's/\r$//' /entrypoint.sh

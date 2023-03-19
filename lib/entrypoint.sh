@@ -31,32 +31,40 @@ if [ -z "$PDX_PASSWORD" ] || [ "$PDX_PASSWORD" = "" ]; then
     exit 1
 fi
 
-if [ -z "$GOOGLE_API_CREDENTIALS" ] || [ "$GOOGLE_API_CREDENTIALS" = "" ]; then
-    echo "GOOGLE_API_CREDENTIALS env variable needs to be set, use your Google API credentials as it!"
+if [ -z "$POP3_ADDRESS" ] || [ "$POP3_ADDRESS" = "" ]; then
+    echo "POP3_ADDRESS env variable needs to be set!"
     exit 1
 fi
 
-if [ -z "$GOOGLE_CLIENT_SECRET" ] || [ "$GOOGLE_CLIENT_SECRET" = "" ]; then
-    echo "GOOGLE_CLIENT_SECRET env variable needs to be set, use your gmail client secret as it!"
+if [ -z "$POP3_USER" ] || [ "$POP3_USER" = "" ]; then
+    echo "POP3_USER env variable needs to be set!"
     exit 1
 fi
 
-echo "$GOOGLE_API_CREDENTIALS" | sudo tee -a /credential.json > /dev/null
-echo "$GOOGLE_CLIENT_SECRET" | sudo tee -a /client_secret.json > /dev/null
+if [ -z "$POP3_PASSWORD" ] || [ "$POP3_PASSWORD" = "" ]; then
+    echo "POP3_PASSWORD env variable needs to be set!"
+    exit 1
+fi
 
-if [ -z "$STEAM_SENTRY_FILE_HEX" ] || [ "$STEAM_SENTRY_FILE_HEX" = "" ] || [ -z "$STEAM_SENTRY_FILE_NAME" ] || [ "$STEAM_SENTRY_FILE_NAME" = "" ]; then
+if [ -z "$STEAM_SENTRY_FILE_HEX" ] || [ "$STEAM_SENTRY_FILE_HEX" = "" ] || [ -z "$STEAM_SENTRY_FILE_NAME" ] || [ "$STEAM_SENTRY_FILE_NAME" = "" ] || [ -z "$STEAM_CONFIG_VDF_HEX" ] || [ "$STEAM_CONFIG_VDF_HEX" = "" ]; then
     sleep 0
 else
     echo "Steam Sentry data found, using it..."
+    rm -f "$HOME/.steam/steam/ssfn*"
     echo "$STEAM_SENTRY_FILE_HEX" | xxd -p -r - "$HOME/.steam/steam/$STEAM_SENTRY_FILE_NAME"
+    rm -f "$HOME/.steam/steam/config/config.vdf"
+    echo "$STEAM_CONFIG_VDF_HEX" | xxd -p -r - "$HOME/.steam/steam/config/config.vdf"
 fi
 curl https://api.ipify.org
-echo "Starting steamcmd"
-/opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit || /opt/steamcmd/steamcmd.sh +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
+# echo "Starting steamcmd"
+# /opt/steamcmd_gmail +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit || /opt/steamcmd/steamcmd.sh +login "$STEAM_LOGIN" "$STEAM_PASSWORD" +quit
 sudo pkill Xvfb
 sleep 1
 sudo Xvfb $DISPLAY -screen 0 1280x720x24 -ac +extension RANDR +render -noreset &
+sleep 1
 if [ -n "$VNC_PASSWORD" ]; then sudo x11vnc -passwd "$VNC_PASSWORD" -display $DISPLAY -N -forever; fi &
 echo "Starting steam"
-/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -no-browser -applaunch "$STEAM_APP_ID" &
+export TIME_START=$(date +%s)
+sleep 5
+/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -applaunch "$STEAM_APP_ID" -windowed -nobigpicture -nointro -vrdisable -inhibitbootstrap -nobootstrapperupdate -nodircheck -norepairfiles -noverifyfiles -nocrashmonitor -skipstreamingdrivers -no-cef-sandbox -nochatui -nofriendsui -silent &
 /home/steam/xdotool_script.sh
