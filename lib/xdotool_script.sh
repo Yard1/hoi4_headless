@@ -77,6 +77,7 @@ do
         else
             POP3_NO_SSL=""
         fi
+        set +x
         STEAM_GUARD_CODE=$(timeout 610 python3 -u /home/steam/get_steam_guard.py "$POP3_ADDRESS" "$POP3_USER" "$POP3_PASSWORD" "$TIME_START" --port "$POP3_PORT" $POP3_NO_SSL)
         if [ "$?" = "0" ]; then
             xdotool mousemove 500 370
@@ -87,6 +88,7 @@ do
             sleep 1
             break
         fi
+        set -x
     elif [ "$i" = '60' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
