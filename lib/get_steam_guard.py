@@ -39,7 +39,7 @@ def get_steam_guard_email(
         print(f"Connected to server {address} as user '{user}'", file=sys.stderr)
 
         print(f"Querying server...", file=sys.stderr)
-        indices = [i for i in range(1, len(server.list()[1]) + 1)][-3:]
+        indices = [i for i in range(1, len(server.list()[1]) + 1)][-10:]
         messages = [
             "\n".join([x.decode("utf-8") for x in server.retr(i)[1]]) for i in indices
         ]
