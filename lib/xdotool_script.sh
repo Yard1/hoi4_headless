@@ -136,6 +136,10 @@ do
         echo "Ignore pending cloud uploads..."
         xdotool mousemove 750 470
         xdotool click 1 mousemove 0 0
+    elif compare_current_screen "$HOME/image_specimens/cloud_out_of_date_120_32_570_624.png" "120x32+570+624"; then
+        echo "Cloud out of date, play anyway..."
+        xdotool mousemove 630 640
+        xdotool click 1 mousemove 0 0
     elif compare_current_screen "$HOME/image_specimens/get_started_152_15_563_476.png" "152x15+563+476"; then
         echo "Get Started..."
         xdotool mousemove 640 480
