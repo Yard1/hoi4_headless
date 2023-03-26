@@ -149,7 +149,7 @@ do
         xdotool mousemove 640 480
         xdotool click 1 mousemove 0 0
         break
-    elif [ "$i" = '600' ]; then
+    elif [ "$i" = '60' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
         img=$((img+1))
