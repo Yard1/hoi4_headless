@@ -140,6 +140,10 @@ do
         echo "Cloud out of date, play anyway..."
         xdotool mousemove 630 640
         xdotool click 1 mousemove 0 0
+    elif compare_current_screen "$HOME/image_specimens/cloud_out_of_date_2_212_32_415_503.png" "212x32+415+503"; then
+        echo "Cloud out of date, play anyway..."
+        xdotool mousemove 515 515
+        xdotool click 1 mousemove 0 0
     elif compare_current_screen "$HOME/image_specimens/get_started_152_15_563_476.png" "152x15+563+476"; then
         echo "Get Started..."
         xdotool mousemove 640 480
