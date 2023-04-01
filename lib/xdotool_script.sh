@@ -1,8 +1,10 @@
 #!/bin/bash
 
 img=0
+steam_window_closed=0
+friends_window_closed=0
 
-set -x
+# set -x
 # $1 = filename
 # $2 = crop arguments
 compare_current_screen () {
@@ -21,6 +23,23 @@ compare_current_screen () {
     fi
 }
 
+close_steam_windows() {
+    if [ "$steam_window_closed" = 0 ] && compare_current_screen "$HOME/image_specimens/steam_window_54_10_1073_76.png" "54x10+1073+76"; then
+        echo "Closing Steam UI..."
+        xdotool mousemove 1122 80
+        xdotool click 1 mousemove 0 0
+        steam_window_closed=1
+        sleep 1
+    fi
+    if [ "$friends_window_closed" = 0 ] && compare_current_screen "$HOME/image_specimens/steam_friends_61_14_720_41.png" "61x14+720+41"; then
+        echo "Closing friends UI..."
+        xdotool mousemove 775 48
+        xdotool click 1 mousemove 0 0
+        friends_window_closed=1
+        sleep 1
+    fi
+}
+
 # $1 = filename
 # $2 = crop arguments
 # $3 = max_iters
@@ -32,6 +51,7 @@ wait_until_screen_matches () {
     while sleep 2
     do
         echo "wait_until_screen_matches $i $1 $2"
+        close_steam_windows
         if compare_current_screen "$1" "$2"; then
             sleep 1
             break
@@ -70,17 +90,17 @@ echo "Starting script..."
 i=0
 while sleep 2
 do
-    if compare_current_screen "$HOME/image_specimens/steam_guard_238_24_321_203.png" "238x24+321+203"; then
+    if compare_current_screen "$HOME/image_specimens/steam_guard_238_24_321_183.png" "238x24+321+183"; then
         echo "Get Steam Guard code..."
         if [ ! -z "$POP3_NO_SSL" ] && [ "$POP3_NO_SSL" != 0 ]; then
             POP3_NO_SSL="--no-ssl"
         else
             POP3_NO_SSL=""
         fi
-        set +x
+        # set +x
         STEAM_GUARD_CODE=$(timeout 610 python3 -u /home/steam/get_steam_guard.py "$POP3_ADDRESS" "$POP3_USER" "$POP3_PASSWORD" "$TIME_START" --port "$POP3_PORT" $POP3_NO_SSL)
         if [ "$?" = "0" ]; then
-            xdotool mousemove 500 370
+            xdotool mousemove 500 340
             xdotool click 1 mousemove 0 0
             xdotool type "$STEAM_GUARD_CODE"
             sleep 0.5
@@ -88,7 +108,7 @@ do
             sleep 1
             break
         fi
-        set -x
+        # set -x
     elif [ "$i" = '60' ]; then
         echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
         sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
@@ -124,6 +144,7 @@ sleep 5
 i=0
 while sleep 2
 do
+    close_steam_windows
     if compare_current_screen "$HOME/image_specimens/update_135_60_805_427.png" "135x60+805+427"; then
         echo "Accept update..."
         xdotool mousemove 840 470
@@ -176,6 +197,7 @@ sleep 0.5
 xdotool key Return
 
 sleep 7
+close_steam_windows
 
 echo "Saving current screen to $DEBUG_IMAGES/debug_screen_$img.png"
 sudo import -screen -window root $DEBUG_IMAGES/debug_screen_$img.png
@@ -204,6 +226,7 @@ sleep 0.1
 xdotool mousemove 0 0
 
 sleep 2
+close_steam_windows
 
 echo "Click on Mod Tools..."
 i=0

@@ -27,6 +27,8 @@ ARG target="/home/steam/.steam/steam/steamapps/common/Hearts of Iron IV"
 ENV DISPLAY :98
 RUN /opt/steamcmd/steamcmd.sh +quit
 RUN /home/steam/update_steam.sh
+RUN /home/steam/update_steam.sh
+RUN /home/steam/update_steam.sh
 ADD --chown=steam:steam data/hoi4 ${target}
 ADD --chown=steam:steam data/appmanifest_394360.acf "/home/steam/.steam/steam/steamapps/"
 RUN mkdir /home/steam/image_specimens

@@ -66,5 +66,5 @@ if [ -n "$VNC_PASSWORD" ]; then sudo x11vnc -passwd "$VNC_PASSWORD" -display $DI
 echo "Starting steam"
 export TIME_START=$(date +%s)
 sleep 5
-/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -applaunch "$STEAM_APP_ID" -windowed -nobigpicture -nointro -vrdisable -inhibitbootstrap -nobootstrapperupdate -nodircheck -norepairfiles -noverifyfiles -nocrashmonitor -skipstreamingdrivers -no-cef-sandbox -nochatui -nofriendsui -silent &
+/usr/games/steam -login "$STEAM_LOGIN" "$STEAM_PASSWORD" -applaunch "$STEAM_APP_ID" -no-cef-sandbox -nochatui -nofriendsui -silent &
 /home/steam/xdotool_script.sh
